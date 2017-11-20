@@ -55,25 +55,20 @@ def processRequest(req):
         return {}
     #baseurl = "https://query.yahooapis.com/v1/public/yql?"
     
-    
-#     baseurl = "https://flight.yatra.com/air-service/dom2/search?type=O&viewName=normal&flexi=0&noOfSegments=1&origin=DEL&originCountry=IN&destination=BLR&destinationCountry=IN&flight_depart_date=18/11/2017&ADT=1&CHD=0&INF=0&class=Economy&source=fresco-homeUrl"
-    
+    '''
+    #Google Location API Integration Working fine
     baseurl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=28.7041,77.1025"
     yql_url = baseurl + "&format=json"
     result = urlopen(yql_url).read()
     data1 = json.loads(result)
-    
-
-#     yql_query = makeYqlQuery(req)
-#     yql_url = baseurl + urlencode({'type':O,'viewName':normal,'flexi':0,'noOfSegments':1,'origin':DEL,'originCountry':IN,'destination':BLR,'destinationCountry':IN,'flight_depart_date':21/11/2017,'ADT':1,'CHD':0,'INF':0,'class':Economy,'source':fresco-homeUrl}) + "&format=json"
-#     result = urlopen(yql_url).read()
-#     data = json.loads(result)
-    
-#     data['error_message']
-#     data = "Hello API is working fine"
     res = makeWebhookResult_1(data1['results'][0]['address_components'][1]['long_name'])
-    
-    #res = makeWebhookResult_1(data)
+    '''
+    #Yatra Flight Rest API Integration
+    baseurl = "https://flight.yatra.com/air-service/dom2/search?type=O&viewName=normal&flexi=0&noOfSegments=1&origin=DEL&originCountry=IN&destination=BLR&destinationCountry=IN&flight_depart_date=25/11/2017&ADT=1&CHD=0&INF=0&class=Economy&source=fresco-homeUrl"
+    yql_url = baseurl + "&format=json"
+    result = urlopen(yql_url).read()
+    data = json.loads(result)
+    res = makeWebhookResult_1(data['airportName']['DEL'])
     return res
      
     '''
