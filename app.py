@@ -73,7 +73,7 @@ def processRequest(req):
     else:
         data1 = "It's an empty or blank API"
     
-    res = makeWebhookResult_1(data['airportName']['DEL'])
+    res = makeWebhookResult_1(data1)
     return res
      
     '''
