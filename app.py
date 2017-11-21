@@ -68,10 +68,10 @@ def processRequest(req):
 #     baseurl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=28.7041,77.1025"
    
 #     Gobaseurl = "https://www.goibibo.com/hotels/search-data/?app_id=6cdea2ed&app_key=21851393be2971afb5cdf941c20e4390&vcid=710870868236923145&ci=20171003&co=20171124&r=1-1_0"
-
+    Hotbaseurl = "http://api.travelguru.com/f1/v1/api/hotels/00101778?apiKey=OKMNBxsjHO7JgRMztkt5&type=content"
 #     yql_url = Gobaseurl + "&format=json"
     
-    yql_url = baseurl + "&format=json"
+    yql_url = Hotbaseurl + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
     if not data:
@@ -79,7 +79,7 @@ def processRequest(req):
     else:
        data1 = "Getting Response from API"
     
-    res = makeWebhookResult_1(data1)    
+    res = makeWebhookResult_1(data['data']['content']['address'])    
 #   res = makeWebhookResult_1(data['results'][0]['address_components'][1]['long_name'])
 #     res = makeWebhookResult_1(data['city_meta_info']['amenities']['Business Services'])
     return res
