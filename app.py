@@ -80,7 +80,7 @@ def processRequest(req):
        data1 = "Getting Response from API"
     
 #   res = makeWebhookResult_1(data['results'][0]['address_components'][1]['long_name'])
-    res = makeWebhookResult_1(data1)
+    res = makeWebhookResult_1(data['city_meta_info']['amenities']['Business Services'])
     return res
      
     '''
