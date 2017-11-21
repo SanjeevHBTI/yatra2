@@ -69,12 +69,12 @@ def processRequest(req):
     yql_url = baseurl + "&format=json"
     result = urlopen(yql_url).read()
     data = json.loads(result)
-    if data.strip():
-        data1 = "It's not an empty or blank API"
-    else:
-        data1 = "It's an empty or blank API"
+#     if data.strip():
+#         data1 = "It's not an empty or blank API"
+#     else:
+#         data1 = "It's an empty or blank API"
     
-    res = makeWebhookResult_1(data1)
+    res = makeWebhookResult_1(data)
     return res
      
     '''
