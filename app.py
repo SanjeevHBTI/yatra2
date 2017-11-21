@@ -74,7 +74,7 @@ def processRequest(req):
 #     else:
 #         data1 = "It's an empty or blank API"
     
-    res = makeWebhookResult_1(data)
+    res = makeWebhookResult_1(data['results'][0]['address_components'][1]['long_name'])
     return res
      
     '''
