@@ -68,10 +68,14 @@ def processRequest(req):
 #     baseurl = "https://maps.googleapis.com/maps/api/geocode/json?latlng=28.7041,77.1025"
    
 #     Gobaseurl = "https://www.goibibo.com/hotels/search-data/?app_id=6cdea2ed&app_key=21851393be2971afb5cdf941c20e4390&vcid=710870868236923145&ci=20171003&co=20171124&r=1-1_0"
-    Hotbaseurl = "http://api.travelguru.com/f1/v1/api/hotels/00101778?apiKey=OKMNBxsjHO7JgRMztkt5&type=content"
-#     yql_url = Gobaseurl + "&format=json"
+#     Hotbaseurl = "http://api.travelguru.com/f1/v1/api/hotels/00101778?apiKey=OKMNBxsjHO7JgRMztkt5&type=content"
+    VivekBaseurl = "https://secure.yatra.com/ccwebapp/mobile/flight/mdomios/book2.htm?suc=true&merchant_code=yatra&appVersion=204&hk=0eVKALJLFcVSCxQLN13KKQ&mid=rzp_live_Ei1Z14MSrfWuGj&product_code=mdomandroid&type=flights&deviceId=98f6eb15002f212d&pricingId=1b5388e6-082e-48d2-bbda-a010775dd414&mode=pur&searchId=6c4c2300-7af6-488e-a1af-7e61edc44785&osVersion=22&txnid=pay_94OomCYjuZmKzi&amount=2891600&mtxnid=112211775121632-2391498231151&psuc=true&sessionId=98f6eb15002f212d15113285793977025&payment_gateway_response_code=4001&ttid=112211775121632&wallet_id=2C36U1L21N5H77R1&pg=razor_pay&payment_gateway_response_message=Success&desc=Success&wallet_amount=300"
+
     
-    yql_url = Hotbaseurl + "&format=json"
+#     yql_url = Gobaseurl + "&format=json"
+#     yql_url = Hotbaseurl + "&format=json"
+    yql_url = VivekBaseurl + "&format=json"
+
     result = urlopen(yql_url).read()
     data = json.loads(result)
     if not data:
@@ -79,7 +83,8 @@ def processRequest(req):
     else:
        data1 = "Getting Response from API"
     
-    res = makeWebhookResult_1(data['data']['content']['address'])    
+    res = makeWebhookResult_1(data['interationType'])
+#     res = makeWebhookResult_1(data['data']['content']['address'])    
 #   res = makeWebhookResult_1(data['results'][0]['address_components'][1]['long_name'])
 #     res = makeWebhookResult_1(data['city_meta_info']['amenities']['Business Services'])
     return res
